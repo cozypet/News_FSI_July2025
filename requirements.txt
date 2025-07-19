@@ -1,0 +1,61 @@
+# Core Dependencies for Financial Research Article Processing Pipeline
+
+# MongoDB driver for database operations
+pymongo==4.6.0
+
+# Mistral AI client for embeddings
+mistralai==0.4.2
+
+# LangChain for text processing and chunking
+langchain==0.1.0
+langchain-core>=0.1.7,<0.2
+langchain-community==0.0.10
+
+# OpenAI's tiktoken for token counting
+tiktoken==0.5.2
+
+# Environment variable management
+python-dotenv==1.0.0
+
+# Data processing utilities
+numpy==1.24.3
+pandas==2.0.3
+
+# HTTP requests (dependency for Mistral client)
+requests==2.31.0
+httpx==0.25.2
+
+# JSON and text processing
+jsonschema==4.20.0
+
+# Progress bars for long-running operations
+tqdm==4.66.1
+
+# Logging and debugging
+colorlog==6.8.0
+
+# Optional: Jupyter notebook support for exploration
+# jupyter==1.0.0
+# ipykernel==6.26.0
+
+# Optional: Data visualization for analysis
+# matplotlib==3.7.2
+# seaborn==0.12.2
+
+# Development and testing (optional)
+# pytest==7.4.3
+# black==23.11.0
+# flake8==6.1.0
+
+# UI and API
+gradio
+mistralai
+
+# Database
+pymongo
+
+# Utilities
+tavily-python
+python-dotenv
+pandas
+streamlit
