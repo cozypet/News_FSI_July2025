@@ -196,7 +196,7 @@ Keep it professional but accessible, around 300-400 words."""
             response = self.mistral_client.chat(
                 model="mistral-medium",
                 messages=[{"role": "user", "content": prompt}],
-                max_tokens=500
+                max_tokens=800
             )
             
             return response.choices[0].message.content
@@ -210,7 +210,7 @@ def format_live_results(results: List[Dict]) -> str:
     if not results:
         return "No live news found for this query."
     
-    output = f"## 🔴 Live Market News ({len(results)} articles)\n\n"
+    output = f"({len(results)} articles)\n\n"
     
     for i, result in enumerate(results, 1):
         title = result.get('title', 'No title')
@@ -228,7 +228,7 @@ def format_archived_results_with_content(results: List[Dict]) -> Tuple[str, str]
     if not results:
         return "No historical articles found for this query.", "No archived article content available."
     
-    output = f"## 📚 Historical Analysis ({len(results)} articles)\n\n"
+    output = f"({len(results)} results) [clickable]\n\n"
     
     for i, result in enumerate(results, 1):
         metadata = result.get('metadata', {})
@@ -239,7 +239,7 @@ def format_archived_results_with_content(results: List[Dict]) -> Tuple[str, str]
         score = result.get('score', 0)
         
         output += f"**{i}. {title}**\n"
-        output += f"🏛️ *{era} ERA ({year})* • 📰 *{source}* • 📊 *{score:.3f} relevance*\n\n"
+        output += f"🏛️ *{era} ERA ({year})* • 📰 *{source}* • 📊 *{score:.3f}*\n\n"
     
     # Get content from the most relevant (first) article
     first_article = results[0]
@@ -250,8 +250,7 @@ def format_archived_results_with_content(results: List[Dict]) -> Tuple[str, str]
     year = metadata.get('published_date', '')[:4] if metadata.get('published_date') else 'Unknown'
     source = metadata.get('source', 'Unknown')
     
-    content_display = f"## 📄 Top Match Content\n\n"
-    content_display += f"**{title}**\n\n"
+    content_display = f"**{title}**\n\n"
     content_display += f"🏛️ *{era} ERA ({year})* • 📰 *{source}*\n\n"
     content_display += f"---\n\n{content}"
     
@@ -395,7 +394,7 @@ def main():
     # └─────────────────────────────────────┘
     st.markdown("""
     <div class="main-header">
-        <h1 style="margin: 0; font-size: 2.5em; font-weight: 300;">🏛️ Goldman Sachs AI Research</h1>
+        <h1 style="margin: 0; font-size: 2.5em; font-weight: 300;">🏛️ Goldman Sachs Asset Management Intelligence Platform</h1>
         <p style="margin: 10px 0; font-size: 1.3em; color: #ffd700; font-weight: 500;">Transform 4 hours → 4 seconds</p>
     </div>
     """, unsafe_allow_html=True)
@@ -403,12 +402,12 @@ def main():
     # ┌─────────────────────────────────────┐
     # │ 🔍 Query Input + Search Button      │
     # └─────────────────────────────────────┘
-    st.markdown("### 🔍 Query Input + Search Button")
+    st.markdown("### 🔍 Investment Research Query")
     col1, col2 = st.columns([4, 1])
     with col1:
         query = st.text_input(
             "",
-            placeholder="Enter your financial research question (e.g., 'Fed rate hike impact on tech stocks')",
+            placeholder="Research query (e.g., 'Fed policy rate news')",
             key="search_query",
             label_visibility="collapsed"
         )
@@ -452,8 +451,7 @@ def main():
     col1, col2, col3 = st.columns([1, 1, 1])
     
     with col1:
-        st.markdown("### 🔴 Live Market News")
-        st.markdown("*(5 results)*")
+        st.markdown("### 🔴 Real-Time Market Intelligence")
         if 'live_output' in st.session_state:
             st.markdown(st.session_state.live_output)
         else:
@@ -482,7 +480,6 @@ def main():
     
     with col3:
         st.markdown("### 📄 Article Content")
-        st.markdown("*(full text) [selected]*")
         if 'selected_article' in st.session_state:
             # Show selected article content
             article = st.session_state.selected_article
@@ -545,7 +542,7 @@ def main():
     st.markdown("")  # Add spacing
     
     # Ask Your Own Question section
-    st.markdown("#### ✏️ Ask Your Own Question:")
+    st.markdown("#### ✏️ Ask Your Own Investment Analysis Question:")
     col1, col2 = st.columns([4, 1])
     with col1:
         custom_query = st.text_input(
@@ -582,7 +579,9 @@ def main():
     
     if 'current_analysis' in st.session_state:
         st.markdown(f"**Analysis: {st.session_state.analysis_title}**")
-        st.markdown(st.session_state.current_analysis)
+        # Use expandable container to ensure full text display
+        with st.expander("📖 Full Analysis", expanded=True):
+            st.markdown(st.session_state.current_analysis)
     else:
         st.info("Detailed Mistral insights appear when cards clicked or custom questions submitted")
     
@@ -597,8 +596,8 @@ def main():
     <div style="text-align: center; padding: 25px; background: #f8f9fa; border-radius: 10px; margin-top: 30px;">
         <h3 style="color: #1f4e79; margin-bottom: 15px;">🚀 Business Impact</h3>
         <p style="font-size: 1.2em; margin: 0; color: #495057; font-weight: 500;">
-            <strong>1,800x faster</strong> • <strong>$1.6M savings</strong><br>
-            <strong>45+ years data</strong> • <strong>Unique insights</strong>
+            <strong>1,800x faster decision speed </strong> • <strong>$1.6M analyst productivity gain</strong><br>
+            <strong>45+ years market history</strong> • <strong>Proprietary cross-cycle analysis</strong>
         </p>
     </div>
     """, unsafe_allow_html=True)
