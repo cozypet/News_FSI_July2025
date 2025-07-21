@@ -6,7 +6,7 @@ Transform 4 hours of financial research into 4 seconds with AI-powered insights.
 
 [**Try the Live App →**](https://hanheloir.streamlit.app) 
 - APP is available 24h/24h.
-- However, DB is available only during working hours: from 8AM - 6 PM CET. You may not be able to get historical data is DB is turned off.
+- However, DB is available only during working hours: from 8AM - 6 PM CET. You may not be able to get historical data when DB is turned off.
 
 ## 🎬 Architecture
 ![Architecture Diagram](architecture-diagram.png)
