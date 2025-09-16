@@ -1,5 +1,5 @@
 """
-Goldman Sachs Financial Research Demo
+Financial Research Demo
 Clean 5-block UI with manual search and dual suggestion inputs + archived article content display
 """
 
