@@ -338,7 +338,7 @@ def main():
     
     # Page configuration
     st.set_page_config(
-        page_title="Goldman Sachs Financial Research",
+        page_title="Global Bank Financial Research",
         page_icon="🏛️",
         layout="wide",
         initial_sidebar_state="collapsed"
