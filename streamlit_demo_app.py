@@ -389,12 +389,12 @@ def main():
         st.session_state.demo_app = FinancialResearchDemo()
     
     # ┌─────────────────────────────────────┐
-    # │ 🏛️ Goldman Sachs AI Research        │
+    # │ 🏛️ Global Bank AI Research          │
     # │ Transform 4 hours → 4 seconds       │
     # └─────────────────────────────────────┘
     st.markdown("""
     <div class="main-header">
-        <h1 style="margin: 0; font-size: 2.5em; font-weight: 300;">🏛️ Goldman Sachs Asset Management Intelligence Platform</h1>
+        <h1 style="margin: 0; font-size: 2.5em; font-weight: 300;">🏛️  Global Bank Asset Management Intelligence Platform</h1>
         <p style="margin: 10px 0; font-size: 1.3em; color: #ffd700; font-weight: 500;">Transform 4 hours → 4 seconds</p>
     </div>
     """, unsafe_allow_html=True)
@@ -603,7 +603,7 @@ def main():
     """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
-    print("🚀 Starting Goldman Sachs Financial Research Demo...")
+    print("🚀 Starting  Global Bank Financial Research Demo...")
     
     # Quick connection test would go here if needed
     print("🎬 Streamlit Demo launching...")
